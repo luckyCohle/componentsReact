@@ -1,69 +1,107 @@
-# React + TypeScript + Vite
+Perfect 👍 here’s a single README.md code block that you can copy–paste directly:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# UI Components Library
 
-Currently, two official plugins are available:
+This repository contains reusable React components built with **TypeScript**, **TailwindCSS**, and **Storybook** for documentation and interactive testing.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Setup Instructions
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone the repository
+```bash
+git clone https://github.com/luckyCohle/componentsReact.git
+cd componentsReact
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. Install dependencies
+```bash
+npm install
+# or
+yarn install
 ```
+
+### 3. Run Storybook
+```bash
+npm run storybook
+# or
+yarn storybook
+```
+
+Storybook will start at http://localhost:6006.
+
+### 🧩 Components
+🔤 InputField
+
+Variants: outlined, filled, ghost
+
+Sizes: sm, md, lg
+
+Optional password toggle (show/hide password)
+
+Handles:
+
+Labels
+
+Helper text
+
+Error messages
+
+Disabled state
+
+Fully controlled with value and onChange.
+
+📊 DataTable
+
+Displays tabular data with typed Column<T> definitions.
+
+Features:
+
+Column sorting (click header to sort)
+
+Row sorting (shift rows up/down with arrow buttons)
+
+Row selection (single or multiple)
+
+Loading state
+
+Empty state
+
+### 🛠️ Approach
+InputField
+
+Implemented as a controlled component for predictable state handling.
+
+TailwindCSS utility classes manage styling across variants and sizes.
+
+Password visibility toggle uses FaEye and FaRegEyeSlash from react-icons.
+
+DataTable
+
+Generic implementation with Column<T> for flexibility.
+
+Sorting:
+
+Column sorting via header click
+
+Row sorting via up/down arrows for accessibility
+
+Supports single and multiple row selection with callbacks.
+
+Provides UX-friendly states for loading and empty scenarios.
+
+###📖 Storybook
+
+Each component includes stories for:
+
+Default usage
+
+Variants & sizes
+
+Error and helper states
+
+Disabled examples
+
+Password toggle input
+
+DataTable with sorting, row selection, loading, and empty state
