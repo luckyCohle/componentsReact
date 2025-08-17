@@ -67,9 +67,9 @@ function DataTable<T extends { id?: string | number }>({
     if (
       (dir === "up" && curIdx === 0) ||
       (dir === "down" && curIdx === displayData.length - 1)
-    )
+    ){
       return;
-
+    }
     const dataArray = [...displayData];
     const el = dataArray[curIdx];
     dataArray.splice(curIdx, 1);
@@ -85,13 +85,17 @@ function DataTable<T extends { id?: string | number }>({
       <table className="min-w-full border-collapse border rounded-xl border-gray-300">
         <thead>
           <tr>
-            {selectable && <th className="border px-3 py-2">Select</th>}
-            {rowSortable && <th className="border px-3 py-2">Manual Sort</th>}
+            {selectable && (
+              <th className="border px-3 py-2 text-center">Select</th>
+            )}
+            {rowSortable && (
+              <th className="border px-3 py-2 text-center">Manual Sort</th>
+            )}
             {columns.map((column, index) => (
               <th
                 key={index}
                 onClick={() => handleColumnSort(column.key)}
-                className="border px-3 py-2 cursor-pointer"
+                className="border px-3 py-2 cursor-pointer text-center"
               >
                 {column.header}
                 {sortable && column.sortable && sortingKey === column.key && (
@@ -101,11 +105,12 @@ function DataTable<T extends { id?: string | number }>({
             ))}
           </tr>
         </thead>
+
         <tbody>
           {displayData.map((item, rowIndex) => (
             <tr key={item["id"] ?? rowIndex} className="hover:bg-gray-50">
               {selectable && (
-                <td className="border px-3 py-2 flex justify-center items-center">
+                <td className="border px-3 py-2 text-center">
                   <input
                     type="checkbox"
                     checked={selectedRows.includes(item)}
@@ -114,22 +119,21 @@ function DataTable<T extends { id?: string | number }>({
                 </td>
               )}
               {rowSortable && (
-                <td className="border px-3 py-2 flex flex-col gap-1 justify-center items-center">
-                  <IoIosArrowDropupCircle
-                    onClick={() => handleRowShift("up", rowIndex)}
-                    className="cursor-pointer"
-                  />
-                  <IoIosArrowDropdownCircle
-                    onClick={() => handleRowShift("down", rowIndex)}
-                    className="cursor-pointer"
-                  />
+                <td className="border px-3 py-2 text-center">
+                  <div className="flex flex-col items-center gap-1">
+                    <IoIosArrowDropupCircle
+                      onClick={() => handleRowShift("up", rowIndex)}
+                      className="cursor-pointer"
+                    />
+                    <IoIosArrowDropdownCircle
+                      onClick={() => handleRowShift("down", rowIndex)}
+                      className="cursor-pointer"
+                    />
+                  </div>
                 </td>
               )}
               {columns.map((col, colIndex) => (
-                <td
-                  key={colIndex}
-                  className="border px-3 py-2 text-center"
-                >
+                <td key={colIndex} className="border px-3 py-2 text-center">
                   {String(item[col.key])}
                 </td>
               ))}
